@@ -25,6 +25,8 @@ public class SimpleChatClient {
 
     private SocketClient scSocket;
 
+    private String userName;
+
     public void initUI(){
 
         frame = new JFrame("Simple Chat Client");
@@ -67,10 +69,21 @@ public class SimpleChatClient {
         taRecord.append(message + "\n");
     }
 
+    public void setUserName(String name){
+        userName = name;
+    }
+
+    public String getUserName(){
+        return userName;
+    }
+
     class SendListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             String strInput = taInput.getText();
+            strInput = userName + "\n" + strInput;
+            strInput = strInput.replace("\n","////");
+//            System.out.println(strInput);
             try {
                 scSocket.send(strInput);
             } catch (IOException e1) {

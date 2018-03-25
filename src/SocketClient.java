@@ -27,6 +27,8 @@ public class SocketClient {
     }
 
     public void send(String message) throws IOException {
+//        pwSend.println(sccUI.getUserName()+ "\n" + message);
+//        System.out.println(message);
         pwSend.println(message);
         pwSend.flush();
     }
@@ -38,7 +40,7 @@ public class SocketClient {
 
             try {
                 while (null != (message = brReader.readLine())){
-                    System.out.println(message);
+//                    System.out.println(message);
                     sccUI.editRecord(message);
                 }
             } catch (IOException e) {
